@@ -1,0 +1,22 @@
+{
+  "name": "angular2",
+  "version": "1.0.0",
+  "description": "Test build of angular2n",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanthissa/angular2.git"
+  },
+  "author": "andrew bilgore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lanthissa/angular2/issues"
+  },
+  "homepage": "https://github.com/lanthissa/angular2#readme",
+  "devDependencies": {
+    "tsd": "^0.6.5"
+  }
+}

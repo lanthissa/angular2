@@ -3,33 +3,23 @@
  */
 import {Component, View} from 'angular2/core';
 import {HEROES} from './data/app.data.Heroes'
+import {Hero} from './hero'
+import {HeroDetailComponent} from './hero-detail.component';
 
-export interface Hero {
-    id: number;
-    name: string;
-}
 
 @Component({
     selector: 'my-app',
     template:`
-    <h1> My First Angular 2 App </h1> 
-    <div *ngIf="selectedHero"> 
-        <h2>{{ selectedHero.name }} details!</h2>
-        <div>
-            <label>id: </label>{{ selectedHero.id }}
-        </div>
-        <div>
-            <label>name:</label>
-            <input [(ngModel)]="selectedHero.name" placeholder="name">
-        </div>
-    </div> 
-    <h2>My Heroes</h2> 
+    <h1> {{ title }} </h1>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    <h2>My Heroes</h2>
     <ul class="heroes"> 
         <li *ngFor="#hero of heroes" (click)="onSelect(hero)"
         [class.selected]="hero===selectedHero">
             <span class="badge">{{ hero.id }}</span>{{ hero.name }}
         </li>
-    </ul>`,
+    </ul>
+    `,
     styles:[`
   .selected {
     background-color: #CFD8DC !important;
@@ -77,19 +67,17 @@ export interface Hero {
     margin-right: .8em;
     border-radius: 4px 0px 0px 4px;
   }
-`]
+`],
+    directives: [HeroDetailComponent]
 
 })
 
 
 
 export class AppComponent {
+    public title = 'Tour of Heros';
     public heroes = HEROES;
     public selectedHero: Hero;
     onSelect(hero: Hero) { this.selectedHero = hero; }
-    public hero : Hero  = {
-    id:1,
-    name: 'Windstorm'
-    };
 
 }

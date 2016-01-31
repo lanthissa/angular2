@@ -2,10 +2,11 @@
  * Created by andrewbilgore on 1/28/16.
  */
 import {Component, View} from 'angular2/core';
-import {HEROES} from './data/app.data.Heroes'
+import {HeroService} from './hero.service';
 import {Hero} from './hero'
 import {HeroDetailComponent} from './hero-detail.component';
-
+import {ngOnInit} from 'angular2/core';
+import {OnInit} from "angular2/core";
 
 @Component({
     selector: 'my-app',
@@ -68,16 +69,25 @@ import {HeroDetailComponent} from './hero-detail.component';
     border-radius: 4px 0px 0px 4px;
   }
 `],
-    directives: [HeroDetailComponent]
+    directives: [HeroDetailComponent],
+    providers: [HeroService]
 
 })
 
 
 
-export class AppComponent {
-    public title = 'Tour of Heros';
-    public heroes = HEROES;
+export class AppComponent implements OnInit{
+    constructor(private _heroService: HeroService) { }
+    public title = 'Tour of Heroes';
+    public heroes: Hero[];
     public selectedHero: Hero;
+    getHeroes(){
+        this._heroService.getHeroes().then(heroes => this.heroes = heroes)
+    }
+    ngOnInit(){
+        this.getHeroes();
+    }
+
     onSelect(hero: Hero) { this.selectedHero = hero; }
 
 }

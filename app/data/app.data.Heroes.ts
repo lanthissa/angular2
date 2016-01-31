@@ -1,7 +1,7 @@
 /**
  * Created by andrewbilgore on 1/31/16.
  */
-import {Hero} from '../app.component'
+import {Hero} from '../hero'
 
 export let HEROES: Hero[] = [
     { "id": 11, "name": "Mr. Nice" },
